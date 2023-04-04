@@ -20,6 +20,15 @@ router.get("/:tarifId", async (req, res, next) => {
   }
 });
 
+router.get("/detay/:id", async (req, res, next) => {
+  try {
+    const tarifler = await tarifModel.idyeGoreTarifGetir(req.params.id);
+    res.json(tarifler);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/:tarifId/:adimSirasi", async (req, res, next) => {
   try {
     const icindekiler = await tarifModel.findTafifIcindekileriById(
@@ -27,15 +36,6 @@ router.get("/:tarifId/:adimSirasi", async (req, res, next) => {
       req.params.adimSirasi
     );
     res.json(icindekiler);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/icindekiler/:tarifId", async (req, res, next) => {
-  try {
-    const tarifler = await tarifModel.idyeGoreTarifGetir(req.params.tarifId);
-    res.json(tarifler);
   } catch (err) {
     next(err);
   }

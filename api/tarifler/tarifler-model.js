@@ -141,7 +141,7 @@ const idyeGoreTarifGetir = async function (tarifId) {
     )
     .where("tarifler.tarif_id", tarifId);
 
-  if (tarifler.length === 0) {
+  if (temeltablo.length === 0) {
     return [];
   }
 
@@ -151,8 +151,8 @@ const idyeGoreTarifGetir = async function (tarifId) {
     adimlar: [],
   };
 
-  for (let i = 0; i < tarifler.length; i++) {
-    const tarif = tarifler[i];
+  for (let i = 0; i < temeltablo.length; i++) {
+    const tarif = temeltablo[i];
 
     const adimModel = {
       adim_id: tarif.adim_id,
